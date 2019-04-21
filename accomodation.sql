@@ -13,7 +13,7 @@ USE `accommodation`;
 DROP TABLE IF EXISTS `location`;
 
 CREATE TABLE `location` (
-    `locationId` int(11) NOT NULL,
+	`locationId` int(11) NOT NULL,
     `location_short_name` varchar(40) NOT NULL,
     `location_manager` varchar(50) NOT NULL,
     PRIMARY KEY (`locationId`)
@@ -22,9 +22,14 @@ CREATE TABLE `location` (
 /*
 Enter data here
 */
+insert into `location` (`locationId`, `location_short_name`, `location_manager`) VALUES 
+(1, 'SF', 'Bob'),
+(2, 'MA', 'Alice');
+
+
 DROP TABLE IF EXISTS `ref_unit_types`;
 CREATE TABLE `ref_unit_types` (
-    `unit_type_code` int(11) NOT NULL,
+	`unit_type_code` int(11) NOT NULL,
     `unit_description` varchar(50) NOT NULL,
     PRIMARY KEY (`unit_type_code`)
     );
@@ -33,9 +38,13 @@ CREATE TABLE `ref_unit_types` (
 Enter the data here
 */
 
+insert into `ref_unit_types` (`unit_type_code`, `unit_description`) VALUES
+(3, 'Sea Facing'),
+(5, 'Cityside');
+
 DROP TABLE IF EXISTS `units`;
 CREATE TABLE `units` (
-    `unit_id` int(11) NOT NULL,
+	`unit_id` int(11) NOT NULL,
     `locationId` int(11) NOT NULL,
     `unit_type_code` int(11) NOT NULL,
     `unit_number` int(11) NOT NULL,
@@ -51,9 +60,12 @@ CREATE TABLE `units` (
 Enter the data here
 */
 
+insert into `units` (`unit_id`, `locationId`, `unit_type_code`, `unit_number`, `bedroom_count`) VALUES
+(33, 1, 4, 3, 3);
+
 DROP TABLE IF EXISTS `guests`;
 CREATE TABLE `guests` (
-    `guest_id` int(11) NOT NULL,
+	`guest_id` int(11) NOT NULL,
     `gender` varchar(20) NOT NULL,
     `guest_first_name` varchar(30) NOT NULL,
     `guest_last_name` varchar(30) NOT NULL,
@@ -64,21 +76,24 @@ CREATE TABLE `guests` (
 /* 
 Enter the data here
 */
+insert into `guests` (`guest_id`, `gender`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES
+(10, 'Female', 'Aarohi', 'Mehta', '14Jan1996');
 
 DROP TABLE IF EXISTS `ref_booking_status`;
 CREATE TABLE `ref_booking_status` (
-    `booking_status_code` varchar(50) NOT NULL,
+	`booking_status_code` varchar(50) NOT NULL,
     PRIMARY KEY (`booking_status_code`)
     );
 
 /*
 Enter the data here
 */
-
+insert into `ref_booking_status` (`booking_status_code`) VALUES
+('144Axcpry');
 
 DROP TABLE IF EXISTS `unit_bookings`;
 CREATE TABLE `unit_bookings` (
-    `unit_booking_id` int(11) NOT NULL,
+	`unit_booking_id` int(11) NOT NULL,
     `unit_id` int(11) NOT NULL,
     `guest_id` int(11) NOT NULL,
     `booking_status_code` varchar(50) NOT NULL,
@@ -96,10 +111,13 @@ CREATE TABLE `unit_bookings` (
 /*
 Enter the data here
 */
+insert into `unit_bookings` (`unit_booking_id`, `unit_id`, `guest_id`, `booking_status_code`, `start_date`, `end_date`) VALUES
+(143, 33, 10, '144Axcpry', '31Oct2019', '14Nov2019');
+
 
 DROP TABLE IF EXISTS `view_unit_status`;
 CREATE TABLE `view_unit_status` (
-    `unit_id` int(11) NOT NULL,
+	`unit_id` int(11) NOT NULL,
     `status_date` varchar(50) NOT NULL,
     `unit_booking_id` int(11) NOT NULL,
     PRIMARY KEY (`status_date`),
@@ -107,8 +125,10 @@ CREATE TABLE `view_unit_status` (
     KEY `unit_booking_id` (`unit_booking_id`),
     CONSTRAINT `view_unit_status_ibfk_1` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`),
     CONSTRAINT `view_unit_status_ibfk_2` FOREIGN KEY (`unit_booking_id`) REFERENCES `unit_bookings` (`unit_booking_id`)
-    );
+    ); 
 
 /*
 Enter the data here
 */
+insert into `view_unit_status` (`unit_id`, `status_date`, `unit_booking_id`) VALUES
+(33, '31Oct2019', 143);
