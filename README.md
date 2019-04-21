@@ -2,4 +2,4 @@
 
 ### Schema
 
-![Schema]("accommodation_longterm_dezign.gif")
+![Schema]("./accommodation_longterm_dezign.gif")

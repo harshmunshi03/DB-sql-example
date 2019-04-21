@@ -13,7 +13,7 @@ USE `accommodation`;
 DROP TABLE IF EXISTS `location`;
 
 CREATE TABLE `location` (
-	`locationId` int(11) NOT NULL,
+    `locationId` int(11) NOT NULL,
     `location_short_name` varchar(40) NOT NULL,
     `location_manager` varchar(50) NOT NULL,
     PRIMARY KEY (`locationId`)
@@ -24,7 +24,7 @@ Enter data here
 */
 DROP TABLE IF EXISTS `ref_unit_types`;
 CREATE TABLE `ref_unit_types` (
-	`unit_type_code` int(11) NOT NULL,
+    `unit_type_code` int(11) NOT NULL,
     `unit_description` varchar(50) NOT NULL,
     PRIMARY KEY (`unit_type_code`)
     );
@@ -35,7 +35,7 @@ Enter the data here
 
 DROP TABLE IF EXISTS `units`;
 CREATE TABLE `units` (
-	`unit_id` int(11) NOT NULL,
+    `unit_id` int(11) NOT NULL,
     `locationId` int(11) NOT NULL,
     `unit_type_code` int(11) NOT NULL,
     `unit_number` int(11) NOT NULL,
@@ -53,7 +53,7 @@ Enter the data here
 
 DROP TABLE IF EXISTS `guests`;
 CREATE TABLE `guests` (
-	`guest_id` int(11) NOT NULL,
+    `guest_id` int(11) NOT NULL,
     `gender` varchar(20) NOT NULL,
     `guest_first_name` varchar(30) NOT NULL,
     `guest_last_name` varchar(30) NOT NULL,
@@ -67,7 +67,7 @@ Enter the data here
 
 DROP TABLE IF EXISTS `ref_booking_status`;
 CREATE TABLE `ref_booking_status` (
-	`booking_status_code` varchar(50) NOT NULL,
+    `booking_status_code` varchar(50) NOT NULL,
     PRIMARY KEY (`booking_status_code`)
     );
 
@@ -78,7 +78,7 @@ Enter the data here
 
 DROP TABLE IF EXISTS `unit_bookings`;
 CREATE TABLE `unit_bookings` (
-	`unit_booking_id` int(11) NOT NULL,
+    `unit_booking_id` int(11) NOT NULL,
     `unit_id` int(11) NOT NULL,
     `guest_id` int(11) NOT NULL,
     `booking_status_code` varchar(50) NOT NULL,
@@ -99,7 +99,7 @@ Enter the data here
 
 DROP TABLE IF EXISTS `view_unit_status`;
 CREATE TABLE `view_unit_status` (
-	`unit_id` int(11) NOT NULL,
+    `unit_id` int(11) NOT NULL,
     `status_date` varchar(50) NOT NULL,
     `unit_booking_id` int(11) NOT NULL,
     PRIMARY KEY (`status_date`),
